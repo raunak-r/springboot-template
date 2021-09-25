@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -19,10 +20,22 @@
 	</properties>
 
 	<dependencies>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-devtools</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.elasticsearch.client</groupId>-->
+<!--			<artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.elasticsearch</groupId>-->
+<!--			<artifactId>elasticsearch</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -72,7 +85,102 @@
 			<artifactId>spring-boot-autoconfigure</artifactId>
 			<version>2.4.5</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-core</artifactId>-->
+<!--			<version>1.15.0</version> &lt;!&ndash; {x-version-update;com.azure:azure-core;dependency} &ndash;&gt;-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-core-http-netty</artifactId>-->
+<!--			<version>1.9.1</version> &lt;!&ndash; {x-version-update;com.azure:azure-core-http-netty;dependency} &ndash;&gt;-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-storage-file-share</artifactId>-->
+<!--			<version>12.8.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-storage-queue</artifactId>-->
+<!--			<version>12.8.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-data-tables</artifactId>-->
+<!--			<version>12.0.0-beta.6</version>-->
+<!--		</dependency>-->
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/com.azure/azure-storage-file-datalake &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-storage-file-datalake</artifactId>-->
+<!--			<version>12.7.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-storage-blob</artifactId>-->
+<!--			<version>12.11.0</version> &lt;!&ndash; {x-version-update;com.azure:azure-storage-blob;current} &ndash;&gt;-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-core-test</artifactId>-->
+<!--			<version>1.6.1</version>  &lt;!&ndash; {x-version-update;com.azure:azure-core-test;dependency} &ndash;&gt;-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.azure</groupId>-->
+<!--			<artifactId>azure-identity</artifactId>-->
+<!--			<version>1.2.5</version> &lt;!&ndash; {x-version-update;com.azure:azure-identity;dependency} &ndash;&gt;-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.0-alpha0</version>	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>2.0.0-alpha0</version>
+			<scope>runtime</scope>			<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		</dependency>
 
+		<!-- Added this dependency to include necessary annotations used by reactor
+			core. Without this dependency, javadoc throws a warning as it cannot find
+			enum When.MAYBE which is used in @Nullable annotation in reactor core classes -->
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.2</version> <!-- {x-version-update;com.google.code.findbugs:jsr305;external_dependency} -->
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<version>3.4.5</version> <!-- {x-version-update;io.projectreactor:reactor-test;external_dependency} -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>2.0-M4-groovy-2.5</version> <!-- {x-version-update;org.spockframework:spock-core;external_dependency} -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.2.7</version> <!-- {x-version-update;cglib:cglib-nodep;external_dependency} -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.objenesis</groupId>
+			<artifactId>objenesis</artifactId>
+			<version>3.1</version> <!-- {x-version-update;org.objenesis:objenesis;external_dependency} -->
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.iharder/base64 -->
 		<dependency>
 			<groupId>net.iharder</groupId>
 			<artifactId>base64</artifactId>
@@ -83,6 +191,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8.1</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
