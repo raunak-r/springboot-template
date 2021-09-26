@@ -1,4 +1,4 @@
-package com.raunak.springbootdemootp.auth.entity;
+package com.raunak.springbootdemootp.auth;
 
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.Instant;
 //import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -33,15 +34,15 @@ public class Customer {
     @Column(name="phone", nullable = true, length = 30)
     private String phone;
 
-    @Column(name="enabled", nullable = false)
-    private String enabled;
+//    @Column(name="enabled", nullable = false)
+//    private Boolean enabled;
 
-    private static final long OTP_VALID_DURATION = 5 * 60 * 1000;   // 5 minutes
+    public static final long OTP_VALID_DURATION = 2 * 60 * 1000;   // 5 minutes
     @Column(name = "one_time_password", nullable = true)
     private String oneTimePassword;
 
-    @Column(name = "otp_requested_time", nullable = true) @LastModifiedDate
-    private Instant otpRequestedTime;
+    @Column(name = "otp_requested_time", nullable = true)
+    private Date otpRequestedTime;
 
     @Column(name="created_date", nullable = false) @CreatedDate
     private Instant createdDate;
@@ -89,13 +90,13 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(String enabled) {
-        this.enabled = enabled;
-    }
+//    public Boolean getEnabled() {
+//        return enabled;
+//    }
+//
+//    public void setEnabled(Boolean enabled) {
+//        this.enabled = enabled;
+//    }
 
     public String getOneTimePassword() {
         return oneTimePassword;
@@ -105,11 +106,11 @@ public class Customer {
         this.oneTimePassword = oneTimePassword;
     }
 
-    public Instant getOtpRequestedTime() {
+    public Date getOtpRequestedTime() {
         return otpRequestedTime;
     }
 
-    public void setOtpRequestedTime(Instant otpRequestedTime) {
+    public void setOtpRequestedTime(Date otpRequestedTime) {
         this.otpRequestedTime = otpRequestedTime;
     }
 
@@ -129,22 +130,4 @@ public class Customer {
         this.updatedDate = updatedDate;
     }
 
-//    public boolean isOTPRequired() {
-//        /**
-//         * Method to check if otp is valid or not.
-//         */
-//        if (this.getOneTimePassword() == null) {
-//            return false;
-//        }
-//
-//        long currentTimeInMillis = System.currentTimeMillis();
-//        long otpRequestedTimeInMillis = this.otpRequestedTime.atZone(ZoneOffset.UTC).getSecond() * 1000;
-//
-//        if (otpRequestedTimeInMillis + OTP_VALID_DURATION < currentTimeInMillis) {
-//            // OTP expires
-//            return false;
-//        }
-//
-//        return true;
-//    }
 }

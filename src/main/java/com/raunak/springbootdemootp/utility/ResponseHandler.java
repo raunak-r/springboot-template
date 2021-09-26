@@ -20,6 +20,12 @@ public class ResponseHandler {
                  },
                  "data": data,  // will be present only for status code 200.
              }
+
+         USAGE -
+             In case of success, and json payloads.
+                -> return ResponseHandler.createPayload(payload, 200, null, true);
+             OR in case of errors.
+                -> return ResponseHandler.createPayload(null, 400, error, true);
          */
         HashMap<String, Object> payload = new HashMap<>();
         HashMap<String, Object> meta = new HashMap<>();
